@@ -2,6 +2,8 @@
 
 Plan, time block, and track tasks from your Obsidian vault in any calendar using Morgen.
 
+![Obsidian Tasks in Morgen](https://d3rr38k70shmdg.cloudfront.net/images/obsidian_morgen_cover.jpg)
+
 -----
 
 Plan and schedule your Obsidian tasks in your calendar to protect focused time
@@ -9,6 +11,8 @@ and prevent double-bookings. See your tasks side-by-side with your calendar,
 then drag and drop them in your calendar. You can even create multiple time
 slots for large tasks, filter based on due dates and priority, and sync task
 status back to Obsidian.
+
+To see the plugin in action check out [Journaling in Obsidian onto my Morgen Calendar](https://www.youtube.com/watch?v=wxdQE8i95po) by Danny Hatcher.
 
 ## Features
 
