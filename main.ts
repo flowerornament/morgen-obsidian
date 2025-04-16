@@ -65,6 +65,13 @@ export default class MorgenPlugin extends Plugin {
 			'--morgen-tasks-decorate-ids',
 			this.settings.decorateIDs,
 		);
+		
+		// Reinitialize the post processor with new settings
+		this.postProcessor = new MorgenTasksPostProcessor(this.settings);
+		
+		// Reinitialize the editor extension
+		this.app.workspace.updateOptions();
+		
 		return this.saveSettings();
 	}
 
