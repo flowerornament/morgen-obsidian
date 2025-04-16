@@ -11,10 +11,12 @@ import {
 
 interface MorgenPluginSettings {
 	decorateIDs: 'show' | 'hide' | 'replace_with_emoji';
+	idFormat: 'original' | 'formatted';
 }
 
 const DEFAULT_SETTINGS: MorgenPluginSettings = {
 	decorateIDs: 'show',
+	idFormat: 'original',
 };
 
 class IDWidget extends WidgetType {
@@ -38,12 +40,15 @@ const settingsFacet = Facet.define<MorgenPluginSettings, MorgenPluginSettings>({
 });
 
 function hideIdsDeco(view: EditorView): DecorationSet {
+	const settings = view.state.facet(settingsFacet);
+	const prefix = settings.idFormat === 'original' ? '🆔 ' : '\\[id:: ';
+	const suffix = settings.idFormat === 'original' ? '' : '\\]';
 	return new MatchDecorator({
-		regexp: /🆔 ([A-Za-z0-9]+)/g,
+		regexp: new RegExp(prefix + '([A-Za-z0-9]+)' + suffix, 'g'),
 		decoration: (match) => {
 			return Decoration.replace({
 				widget:
-					view.state.facet(settingsFacet).decorateIDs === 'hide'
+					settings.decorateIDs === 'hide'
 						? undefined
 						: new IDWidget(match[1]),
 			});

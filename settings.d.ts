@@ -4,4 +4,8 @@ export interface MorgenPluginSettings {
 	 * with an emoji.
 	 */
 	decorateIDs: 'show' | 'hide' | 'replace_with_emoji';
+	/**
+	 * The format style for task IDs
+	 */
+	idFormat: 'original' | 'dataview';
 }

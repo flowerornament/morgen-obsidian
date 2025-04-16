@@ -2,7 +2,11 @@ import { MarkdownPostProcessor } from 'obsidian';
 import { MorgenPluginSettings } from 'settings';
 
 const taskIdRegex = /[a-zA-Z0-9-_]+/;
-const IDRegex = new RegExp('🆔 *(' + taskIdRegex.source + ')', 'iu');
+const IDRegex = (format: 'original' | 'dataview') => {
+	const prefix = format === 'original' ? '🆔 *' : '\\[id:: *';
+	const suffix = format === 'original' ? '' : '\\]';
+	return new RegExp(prefix + '(' + taskIdRegex.source + ')' + suffix, 'iu');
+};
 
 interface PostProcessor {
 	postProcess: MarkdownPostProcessor;
@@ -34,7 +38,7 @@ export class MorgenTasksPostProcessor implements PostProcessor {
 			.findAll('p, span, li')
 			.map((container): [HTMLElement, RegExpMatchArray | null] => [
 				container,
-				container.innerText.match(IDRegex),
+				container.innerText.match(IDRegex(this.settings.idFormat)),
 			])
 			.filter((args) => args[1]) as [HTMLElement, RegExpMatchArray][];
 

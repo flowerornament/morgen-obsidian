@@ -7,6 +7,7 @@ import { MorgenPluginSettings } from 'settings';
 
 const DEFAULT_SETTINGS: MorgenPluginSettings = {
 	decorateIDs: 'show',
+	idFormat: 'original',
 };
 
 export default class MorgenPlugin extends Plugin {
@@ -106,6 +107,21 @@ class MorgenSettingTab extends PluginSettingTab {
 					.setValue(this.plugin.settings.decorateIDs)
 					.onChange((value: typeof this.plugin.settings.decorateIDs) =>
 						this.plugin.updateSettings({ decorateIDs: value }),
+					);
+			});
+
+		new Setting(containerEl)
+			.setName('Task ID Format')
+			.setDesc('Choose the format for task IDs')
+			.addDropdown((component) => {
+				component
+					.addOptions({
+						original: 'Original (🆔)',
+						dataview: 'Dataview ([id::])',
+					})
+					.setValue(this.plugin.settings.idFormat)
+					.onChange((value: typeof this.plugin.settings.idFormat) =>
+						this.plugin.updateSettings({ idFormat: value }),
 					);
 			});
 	}
