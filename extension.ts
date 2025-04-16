@@ -11,7 +11,7 @@ import {
 
 interface MorgenPluginSettings {
 	decorateIDs: 'show' | 'hide' | 'replace_with_emoji';
-	idFormat: 'original' | 'formatted';
+	idFormat: 'original' | 'dataview';
 }
 
 const DEFAULT_SETTINGS: MorgenPluginSettings = {

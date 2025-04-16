@@ -3,7 +3,7 @@ import { MorgenPluginSettings } from 'settings';
 
 const taskIdRegex = /[a-zA-Z0-9-_]+/;
 const IDRegex = (format: 'original' | 'dataview') => {
-	const prefix = format === 'original' ? '🆔 *' : '\\[id:: *';
+	const prefix = format === 'original' ? '🆔 ' : '\\[id:: ';
 	const suffix = format === 'original' ? '' : '\\]';
 	return new RegExp(prefix + '(' + taskIdRegex.source + ')' + suffix, 'iu');
 };

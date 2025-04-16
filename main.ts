@@ -105,7 +105,7 @@ class MorgenSettingTab extends PluginSettingTab {
 						show: 'Show IDs',
 					})
 					.setValue(this.plugin.settings.decorateIDs)
-					.onChange((value: typeof this.plugin.settings.decorateIDs) =>
+					.onChange((value: 'show' | 'hide' | 'replace_with_emoji') =>
 						this.plugin.updateSettings({ decorateIDs: value }),
 					);
 			});
@@ -120,7 +120,7 @@ class MorgenSettingTab extends PluginSettingTab {
 						dataview: 'Dataview ([id::])',
 					})
 					.setValue(this.plugin.settings.idFormat)
-					.onChange((value: typeof this.plugin.settings.idFormat) =>
+					.onChange((value: 'original' | 'dataview') =>
 						this.plugin.updateSettings({ idFormat: value }),
 					);
 			});

@@ -1,17 +1,17 @@
 @container style(--morgen-tasks-decorate-ids: hide) {
 	/** Hide ID spans completely in both Kanban and Tasks plugins */
-	.kanban-plugin__inline-metadata__id, .task-id {
+	.kanban-plugin__inline-metadata__id, .task-id, .dataview-id {
 		display: none;
 	}
 }
 
 @container style(--morgen-tasks-decorate-ids: replace_with_emoji) {
 	/** Replace ID spans with emoji in Tasks plugin */
-	.task-id {
+	.task-id, .dataview-id {
 		font-size: 0pt;
 	}
 
-	.task-id::before {
+	.task-id::before, .dataview-id::before {
 		font-size: initial;
 		content: '▫️';
 	}
